@@ -19,12 +19,6 @@ public class MessageService {
 	
 	public List<MyMessage> getAllMessages() {
 		return new ArrayList<MyMessage>(messages.values());
-//		MyMessage m1 = new MyMessage(1L,"Hello world","sherlock");
-//		MyMessage m2 = new MyMessage(2L,"Hello London","holmes");
-//		List<MyMessage> list = new ArrayList<MyMessage>();
-//		list.add(m1);
-//		list.add(m2);
-//		return list;
 	}
 	
 	public MyMessage getMessage(Long id) {
@@ -47,5 +41,7 @@ public class MessageService {
 	
 	public MyMessage deleteMessage(Long id) {
 		return messages.remove(id);
+		//Note that if you delete message in between, the subsequent ids are not modified
+		//therefore, when calculating new id, it may be the one already present in the map
 	}
 }
