@@ -22,6 +22,19 @@ public class MessageService {
 		return new ArrayList<MyMessage>(messages.values());
 	}
 	
+	public List<MyMessage> getAllMessagesLimit(int limit) {
+		List<MyMessage> list = new ArrayList<MyMessage>();
+		for(int i=1;i<=limit;i++) {
+			MyMessage msg = messages.get((long)i);
+			if(msg != null) {
+				list.add(msg);
+			} else {
+				break;
+			}
+		}
+		return list;
+	}
+	
 	public MyMessage getMessage(Long id) {
 		return messages.get(id);
 	}

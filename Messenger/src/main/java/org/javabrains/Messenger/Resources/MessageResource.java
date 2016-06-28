@@ -10,6 +10,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import org.javabrains.Messenger.Model.MyMessage;
@@ -22,7 +23,11 @@ public class MessageResource {
 	
 	@GET
 	@Produces(MediaType.APPLICATION_XML)
-	public List<MyMessage> getMessages() {
+	public List<MyMessage> getMessages(@QueryParam("limit") int limit) {
+		if(limit > 0) {
+			//make own map
+			return msg_service.getAllMessagesLimit(limit);
+		}
 		return msg_service.getAllMessages();
 	}
 	
