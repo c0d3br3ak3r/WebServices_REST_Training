@@ -2,6 +2,7 @@ package org.javabrains.Messenger.Resources;
 
 import java.util.List;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -31,6 +32,13 @@ public class MessageResource {
 	}
 	
 
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public MyMessage addMessage(MyMessage msg) {
+		return msg_service.addMessage(msg);
+	}
+	
 	@POST
 	@Produces(MediaType.TEXT_HTML)
 	public String getMessagesPost() {
