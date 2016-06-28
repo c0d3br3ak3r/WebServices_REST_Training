@@ -13,6 +13,7 @@ public class MessageService {
 	
 	public MessageService() {
 		//adding some initial entries
+		// why is it getting initialized everytime ????
 		messages.put(1L, new MyMessage(1L,"Hello world","sherlock"));
 		messages.put(2L, new MyMessage(2L,"Hello London","sherlock"));
 	}
@@ -32,10 +33,8 @@ public class MessageService {
 	}
 	
 	public MyMessage updateMessage(MyMessage msg) {
-		if(msg.getId() <= 0) {
-			return null;
-		}
 		messages.put(msg.getId(), msg);
+		System.out.println("OMG " + msg.getId());
 		return msg;
 	}
 	

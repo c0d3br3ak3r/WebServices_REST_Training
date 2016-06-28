@@ -3,8 +3,10 @@ package org.javabrains.Messenger.Resources;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -39,7 +41,27 @@ public class MessageResource {
 		return msg_service.addMessage(msg);
 	}
 	
+	
+	@PUT
+	@Path("/{messageId}")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public MyMessage updateMessage(@PathParam("messageId") long msgId, MyMessage msg) {
+		msg.setId(msgId);
+		System.out.println(msgId);
+		return msg_service.updateMessage(msg);
+	}
+	
+	@DELETE
+	@Path("/{messageId}")
+	@Produces(MediaType.APPLICATION_XML)
+	public MyMessage deleteMessage(@PathParam("messageId") long id) {
+		return msg_service.deleteMessage(id);
+	}
+	
+	
 	@POST
+	@Path("/test")
 	@Produces(MediaType.TEXT_HTML)
 	public String getMessagesPost() {
 		return "<h1>Hello world</h1>";
