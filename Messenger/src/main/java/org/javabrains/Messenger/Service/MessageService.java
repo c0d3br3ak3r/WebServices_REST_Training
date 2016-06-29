@@ -40,7 +40,9 @@ public class MessageService {
 	}
 	
 	public MyMessage addMessage(MyMessage msg) {
-		msg.setId(messages.size()+1);
+		Object[] messageIds = (messages.keySet()).toArray();
+		long messageId = ((long) messageIds[messages.size()-1]);
+		msg.setId(messageId+1);
 		messages.put(msg.getId(), msg);
 		return msg;
 	}

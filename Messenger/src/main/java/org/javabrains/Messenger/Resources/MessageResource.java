@@ -77,4 +77,9 @@ public class MessageResource {
 	public String testMessage() {
 		return "This is just a test message";
 	}
+	
+	@Path("/{messageId}/comments")
+	public CommentsResource getCommentResource() {
+		return new CommentsResource();
+	}
 }
